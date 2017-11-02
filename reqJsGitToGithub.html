@@ -1,0 +1,24 @@
+<button id='xhr-btn1'>GO!</button>
+<textarea id="xhr-result1"></textarea>
+<script>
+var url="https://api.github.com/users/Matts966"
+var btn1 = document.getElementById('xhr-btn1');
+btn1.onclick = function(){
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.onreadystatechange = function(){
+    // 本番用
+    if (xhr.readyState === 4 && xhr.status === 200){
+      var result1 = document.getElementById('xhr-result1');
+      result1.value = xhr.responseText;
+    }
+    // ローカルファイル用
+    if (xhr.readyState === 4 && xhr.status === 0){
+      var result1 = document.getElementById('xhr-result1');
+      result1.value = xhr.responseText;
+    }
+  };
+  xhr.send(null);
+};
+</script>
